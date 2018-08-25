@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "All cats";
+    return "Welcome";
 });
 
 Route::get('cats/{id}', function($id) {
     return "Cat #$id";
 })->where('id', '[0-9]+');
+
+Route::get('/bill/search', function () {
+    return "Bill";
+});
