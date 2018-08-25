@@ -25,6 +25,7 @@ services:
       - "80"
     ports:
       - "8085:80"
+      - "1443:443"
 
   mysql:
     restart: always
