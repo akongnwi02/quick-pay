@@ -12,7 +12,7 @@ services:
       - ./conf/php/fpm.ini:/etc/php/7.0/fpm/conf.d/99-custom.ini
     working_dir: /app
     env_file:
-      - .env
+      - ./application/.env
     depends_on:
       - mysql
       - queue
@@ -37,7 +37,7 @@ services:
       - mysql:/var/lib/mysql
       - ./conf/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     env_file:
-      - .env
+      - ./application/.env
 
   queue:
   # TODO use queue image for laravel
@@ -57,9 +57,5 @@ services:
 volumes:
   mysql:
     driver: local
-  beanstalk:
-    driver: local
   redis:
     driver: local
-
-
