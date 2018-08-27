@@ -2,9 +2,7 @@ version: '3.5'
 
 services:
   app:
-    build:
-      context: docker
-      dockerfile: Dockerfile
+    build: .
     restart: always
     volumes:
       - ./application:/app
@@ -22,10 +20,11 @@ services:
       - queue
       - redis
     expose:
-      - "80"
+      - "8000"
     ports:
-      - "8085:80"
+      - "8085:8000"
       - "1443:443"
+    command: bash -c 'php artisan serve --host 0.0.0.0'
 
   mysql:
     restart: always
@@ -33,7 +32,7 @@ services:
     expose:
       - "3306"
     ports:
-      - "3388:3306"
+      - "3389:3306"
     volumes:
       - mysql:/var/lib/mysql
       - ./conf/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -41,9 +40,8 @@ services:
       - ./application/.env
 
   queue:
-  # TODO use queue image for laravel
     restart: always
-    image: phalconphp/beanstalkd:1.0
+    image: schickling/beanstalkd
     expose:
       - "11300"
 

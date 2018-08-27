@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\View;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "Welcome";
+    return View::make('welcome');
 });
 
 Route::get('cats/{id}', function($id) {
