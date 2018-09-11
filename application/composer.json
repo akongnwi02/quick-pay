@@ -1,14 +1,19 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "quick-pay",
+    "description": "Integrating partners' APIs.",
+    "keywords": [
+        "framework",
+        "laravel",
+        "docker"
+    ],
     "type": "project",
+    "author": "Akongnwi Devert",
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "monolog/monolog": "1.22.*"
     },
     "require-dev": {
         "codeception/codeception": "^2.4",
