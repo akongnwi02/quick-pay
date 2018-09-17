@@ -12,10 +12,7 @@ COPY docker/app/bin/*.sh /opt/docker/provision/entrypoint.d/
 # TODO install laravel dev tools
 WORKDIR /app
 
-RUN composer update -o &&\
-    chmod +x /opt/docker/provision/entrypoint.d/*.sh
+RUN chmod +x /opt/docker/provision/entrypoint.d/*.sh
 
-CMD php artisan serve --host=0.0.0.0 --port=8000
-
-EXPOSE 8000
+EXPOSE 80
 

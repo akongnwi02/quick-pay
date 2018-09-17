@@ -6,7 +6,6 @@ services:
     restart: always
     volumes:
       - ./application:/app
-      - /app/vendor/
       - ./conf/php/cli.ini:/etc/php/7.0/cli/conf.d/99-custom.ini
       - ./conf/php/fpm.ini:/etc/php/7.0/fpm/conf.d/99-custom.ini
     working_dir: /app
@@ -21,14 +20,13 @@ services:
       - queue
       - redis
     expose:
-      - "8000"
+      - "80"
     ports:
-      - "8085:8000"
+      - "8085:80"
       - "1443:443"
-    command: bash -c 'php artisan serve --host 0.0.0.0'
+    container_name: quick_pay_app
 
   mysql:
-    restart: always
     image: mysql:5.7
     expose:
       - "3306"
@@ -39,20 +37,21 @@ services:
       - ./conf/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     env_file:
       - ./application/.env
+    container_name: quick_pay_db
 
   queue:
-    restart: always
     image: schickling/beanstalkd
     expose:
       - "11300"
+    container_name: quick_pay_queue
 
   redis:
-    restart: always
     image: redis:4.0.10
     expose:
       - "6379"
     volumes:
       - redis:/var/lib/redis
+    container_name: quick_pay_redis
 
 volumes:
   mysql:
