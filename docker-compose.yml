@@ -37,6 +37,11 @@ services:
       - ./conf/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     env_file:
       - ./application/.env
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
     container_name: quick_pay_db
 
   queue:
