@@ -12,7 +12,7 @@ COPY docker/app/bin/*.sh /opt/docker/provision/entrypoint.d/
 # TODO install laravel dev tools
 WORKDIR /app
 
-RUN chmod +x /opt/docker/provision/entrypoint.d/*.sh
+RUN chmod +x /opt/docker/provision/entrypoint.d/*.sh &&\
+	chmod 777 -R storage bootstrap/cache/
 
 EXPOSE 80
-
